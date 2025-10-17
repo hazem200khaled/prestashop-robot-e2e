@@ -7,6 +7,8 @@ services:
       - SE_START_XVFB=true
     ports:
       - "4444:4444"
+      # (Optional) To see what is happening inside the container, head to http://localhost:7900/?autoconnect=1&resize=scale&password=secret⁠
+      - "7900:7900"
       # optional VNC for live viewing: the password is: "secret"
       - "5900:5900"
     healthcheck:

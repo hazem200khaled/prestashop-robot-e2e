@@ -28,19 +28,8 @@ Open PrestaShop Demo
 
 Generate Unique Email
     ${email}=    FakerLibrary.Email
-    [Return]    ${email}
+    RETURN    ${email}
 
-
-Ensure In Live Shop Frame
-    # Re-select the live shop iframe if we’re not already in it.
-    ${ok}=    Run Keyword And Return Status    Wait Until Page Contains Element    css:iframe#framelive    1s
-    IF    ${ok}
-        # If we see the iframe in the DOM, make sure we are inside it.
-        ${inside}=    Run Keyword And Return Status    Get Element Count    css:body #header
-        IF    not ${inside}
-            Select Frame    css:iframe#framelive
-        END
-    END
 
 Wait For Overlays To Disappear
     FOR    ${loc}    IN    @{OVERLAY_CANDIDATES}

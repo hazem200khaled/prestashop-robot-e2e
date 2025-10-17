@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     End-to-end test: Create account, search notebook, add to cart, and verify.
-Library           SeleniumLibrary    timeout=20    implicit_wait=0.5    run_on_failure=Capture Page Screenshot
+Library           SeleniumLibrary    timeout=20    implicit_wait=1    run_on_failure=NOTHING
 Library           FakerLibrary    locale=en_US
 Resource          ../resources/common.resource
 Resource          ../resources/landing.resource
@@ -17,7 +17,7 @@ ${BASE_URL}       https://demo.prestashop.com/
 ${BROWSER}        chrome
 ${REMOTE_URL}     ${EMPTY}
 ${SEARCH_TERM}    notebook
-${FIRST_NAME}     Khaled
+${FIRST_NAME}     Hazem
 ${LAST_NAME}      Tester
 ${PASSWORD}       P@ssw0rd123456!
 
@@ -32,7 +32,6 @@ Create account, search notebook, add to cart and verify
     ...                - Add to cart and go to cart
     ...                - Assert product exists in cart
     Switch To Live Shop Iframe
-    Dismiss Cookie Banner If Present
     Go To Sign In
     ${email}=    Generate Unique Email
     Create New Account    ${FIRST_NAME}    ${LAST_NAME}    ${email}    ${PASSWORD}
@@ -41,4 +40,6 @@ Create account, search notebook, add to cart and verify
     Open First Search Result
     Product Image Should Be Visible
     Add Product To Cart And Go To Cart
+    Ensure On Cart Page
     Cart Should Contain Items
+    Capture Cart Evidence

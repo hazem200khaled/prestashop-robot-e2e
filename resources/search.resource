@@ -8,4 +8,5 @@ ${FIRST_PRODUCT_LINK}   css:article.product-miniature a.product-thumbnail, artic
 *** Keywords ***
 Open First Search Result
     Wait Until Element Is Visible    ${PRODUCT_CARDS}    20s
+    Wait Until Element Is Visible    ${FIRST_PRODUCT_LINK}    20s
     Click Element    ${FIRST_PRODUCT_LINK}

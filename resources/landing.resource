@@ -14,9 +14,3 @@ Switch To Live Shop Iframe
     Wait Until Element Is Visible    ${IFRAME_LIVE}    40s
     Select Frame    ${IFRAME_LIVE}
     Wait Until Page Contains Element    id:header    20s
-
-Dismiss Cookie Banner If Present
-    FOR    ${locator}    IN    @{COOKIE_ACCEPT_CANDIDATES}
-        ${rc}    ${msg}=    Run Keyword And Ignore Error    Click Element    ${locator}
-        Run Keyword If    '${rc}'=='PASS'    Exit For Loop
-    END

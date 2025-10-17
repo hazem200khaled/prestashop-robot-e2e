@@ -15,9 +15,7 @@ ${LOC_CREATE_LINK}         xpath=//a[contains(@href,'create') or contains(.,'Cre
 *** Keywords ***
 Create New Account
     [Arguments]    ${first}    ${last}    ${email}    ${password}
-    # Sometimes the page shows a sign-in form first; click "Create one" if needed
-    ${_rc}    ${_}=    Run Keyword And Ignore Error    Wait Until Element Is Visible    ${LOC_FIRST_NAME}    5s
-    Run Keyword If    '${_rc}'!='PASS'    Run Keyword And Ignore Error    Click Element    ${LOC_CREATE_LINK}
+    Run Keyword And Ignore Error    Click Element    ${LOC_CREATE_LINK}
     Wait Until Element Is Visible    ${LOC_FIRST_NAME}    20s
 
     Input Text    ${LOC_FIRST_NAME}    ${first}
